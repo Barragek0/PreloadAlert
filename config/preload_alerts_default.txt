@@ -708,3 +708,7 @@ ExileWitch1;Exile Minara Anenima;ff99ff33
 ExileWitch2;Exile Igna Phoenix;ff99ff33
 ExileWitch4;Exile Dena Lorenni;ff99ff33
 
+# SCOURGE
+Metadata/Monsters/LeagueHellscape/PaleFaction/HellscapePaleBoss; Scourge Boss: Beidat, Archangel of Death; ffC23B80
+Metadata/Monsters/LeagueHellscape/FleshFaction/HellscapeFleshBoss; Scourge Boss: Ghorr, the Grasping Maw; ffC23B80
+Metadata/Monsters/LeagueHellscape/DemonFaction/HellscapeDemonBoss; Scourge Boss: K'tash, the Hate Shepherd; ffC23B80
