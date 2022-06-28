@@ -75,8 +75,12 @@ namespace PreloadAlert
                     {
                         DebugWindow.LogMsg($"PreloadAlert.AddLinesFromFile -> Attempting to remove line: {line}");
                         preloadLines.Remove(metadataKey.Split('-')[1]);
+                    } else {
+                        DebugWindow.LogMsg($"PreloadAlert.AddLinesFromFile -> preloadLines contains metadataKey but line does not start with - key: {metadataKey} - line: {line}");
                     }
                     continue;
+                } else {
+                        DebugWindow.LogMsg($"PreloadAlert.AddLinesFromFile -> preloadLines does not contain metadataKey: {metadataKey}");
                 }
 
                 var textAndColor = new PreloadConfigLine
