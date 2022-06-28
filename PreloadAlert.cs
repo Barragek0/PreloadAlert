@@ -70,13 +70,13 @@ namespace PreloadAlert
                 if (line.StartsWith("#")) continue;
 
                 var lineContent = line.Split(';');
-                var metadataKey = lineContent[0].Trim();
-                if (preloadLines.ContainsKey(metadataKey))
+                var metadataKey = lineContent[0].Trim().Replace("-", "");
+                if (preloadLines.ContainsKey( metadataKey)
                 {
                     if (line.StartsWith("-"))
                     {
                         DebugWindow.LogMsg($"PreloadAlert.AddLinesFromFile -> Attempting to remove line: {line}");
-                        preloadLines.Remove(metadataKey.Split('-')[1]);
+                        preloadLines.Remove(metadataKey);
                     } else {
                         DebugWindow.LogMsg($"PreloadAlert.AddLinesFromFile -> preloadLines contains metadataKey but line does not start with - key: {metadataKey} - line: {line}");
                     }
