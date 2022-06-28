@@ -71,7 +71,7 @@ namespace PreloadAlert
 
                 var lineContent = line.Split(';');
                 var metadataKey = lineContent[0].Trim().Replace("-", "");
-                if (preloadLines.ContainsKey( metadataKey)
+                if (preloadLines.ContainsKey(metadataKey))
                 {
                     if (line.StartsWith("-"))
                     {
