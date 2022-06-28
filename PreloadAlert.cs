@@ -73,7 +73,8 @@ namespace PreloadAlert
                 {
                     if (line.StartsWith("-"))
                     {
-                        preloadLines.Remove(metadataKey);
+                        DebugWindow.LogMsg($"PreloadAlert.AddLinesFromFile -> Attempting to remove line: {line}");
+                        preloadLines.Remove(metadataKey.Split('-')[1]);
                     }
                     continue;
                 }
