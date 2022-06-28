@@ -53,7 +53,9 @@ namespace PreloadAlert
 
             PreloadConfigLines.Clear();
 
+            DebugWindow.LogMsg($"PreloadAlert.ReadConfigFiles -> Reading: {PreloadAlerts}");
             AddLinesFromFile(PreloadAlerts, PreloadConfigLines);
+            DebugWindow.LogMsg($"PreloadAlert.ReadConfigFiles -> Reading: {PreloadAlertsPersonal}");
             AddLinesFromFile(PreloadAlertsPersonal, PreloadConfigLines);
         }
 
