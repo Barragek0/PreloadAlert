@@ -125,11 +125,21 @@ namespace PreloadAlert
 
                     if (file.Key.Contains("Archnemesis") || file.Key.Contains("LeagueBestiary"))
                     {
-                        List<Entity> entities = GameController.Entities.Where(x => x.IsValid && !x.IsDead && x.Metadata.Equals(file.Key)).ToList();
+                        List<Entity> entities = GameController.Entities.Where(x => x.IsValid && !x.IsDead).ToList();
                         if (entities.Any())
                         {
-                            PreloadDebug.Add(text);
-                            CheckForPreload(text);
+                            foreach (Entity entity in entities)
+                            {
+                                if (entity.Metadata.Equals(text))
+                                {
+                                    LogMessage("ADDED -> " + entity.Metadata);
+                                    PreloadDebug.Add(text);
+                                    CheckForPreload(text);
+                                } else
+                                {
+                                    LogError("NOT ADDED -> " + entity.Metadata);
+                                }
+                            }
                         }
                     }
                     else
