@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Numerics;
-using System.IO;
-using System.Linq;
-using ExileCore;
+﻿using ExileCore;
+using ExileCore.PoEMemory.MemoryObjects;
 using ExileCore.Shared.Enums;
 using ExileCore.Shared.Helpers;
 using ImGuiNET;
 using SharpDX;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Vector2 = System.Numerics.Vector2;
-using Vector4 = System.Numerics.Vector4;
 
 namespace PreloadAlert
 {
@@ -118,14 +117,26 @@ namespace PreloadAlert
                 foreach (var file in allFiles)
                 {
                     if (file.Value.ChangeCount != GameController.Game.AreaChangeCount) continue;
-                        
+
                     var text = file.Key;
                     if (string.IsNullOrWhiteSpace(text)) continue;
                     if (text.Contains('@')) text = text.Split('@')[0];
-
                     text = text.Trim();
-                    PreloadDebug.Add(text);
-                    CheckForPreload(text);                                
+
+                    if (file.Key.Contains("Archnemesis") || file.Key.Contains("LeagueBestiary"))
+                    {
+                        List<Entity> entities = GameController.Entities.Where(x => x.IsValid && !x.IsDead && x.Metadata.Equals(file.Key)).ToList();
+                        if (entities.Any())
+                        {
+                            PreloadDebug.Add(text);
+                            CheckForPreload(text);
+                        }
+                    }
+                    else
+                    {
+                        PreloadDebug.Add(text);
+                        CheckForPreload(text);
+                    }
                 }
 
 
