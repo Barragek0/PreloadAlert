@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Numerics;
 using System.IO;
 using System.Linq;
 using ExileCore;
@@ -9,6 +10,7 @@ using ExileCore.Shared.Helpers;
 using ImGuiNET;
 using SharpDX;
 using Vector2 = System.Numerics.Vector2;
+using Vector4 = System.Numerics.Vector4;
 
 namespace PreloadAlert
 {
