@@ -122,31 +122,9 @@ namespace PreloadAlert
                     if (string.IsNullOrWhiteSpace(text)) continue;
                     if (text.Contains('@')) text = text.Split('@')[0];
                     text = text.Trim();
-
-                    if (file.Key.Contains("Archnemesis") || file.Key.Contains("LeagueBestiary"))
-                    {
-                        List<Entity> entities = GameController.Entities.Where(x => x.IsValid && !x.IsDead).ToList();
-                        if (entities.Any())
-                        {
-                            foreach (Entity entity in entities)
-                            {
-                                if (entity.Metadata.Equals(text))
-                                {
-                                    LogMessage("ADDED -> " + entity.Metadata);
-                                    PreloadDebug.Add(text);
-                                    CheckForPreload(text);
-                                } else
-                                {
-                                    LogError("NOT ADDED -> " + entity.Metadata);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        PreloadDebug.Add(text);
-                        CheckForPreload(text);
-                    }
+                    LogMessage("ADDED -> "+text);
+                    PreloadDebug.Add(text);
+                    CheckForPreload(text);
                 }
 
 
